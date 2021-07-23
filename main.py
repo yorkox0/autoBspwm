@@ -46,7 +46,9 @@ def menu():
     time.sleep(1)
     print("\n3 -> Instalar Polybar")
     time.sleep(1)
-    print("\n4 -> Salir")
+    print("\n4 -> All In One")
+    time.sleep(1)
+    print("\n5 -> Salir")
     time.sleep(1)
 
     option = input("\n-->> ")
@@ -58,6 +60,10 @@ def menu():
     if option == "3":
         polybar()
     if option == "4":
+        req()
+        bspwm()
+        polybar()
+    if option == "5":
         exit()
 
 def req():
@@ -196,6 +202,17 @@ def polybar():
     os.system("sudo cp tools/cleartarget /bin")
     os.system("sudo chmod +x /bin/settarget")
     os.system("sudo chmod +x /bin/cleartarget")
+
+    # Instalacion de powerlevel10k
+    os.system("git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k")
+    os.system("echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc")
+    os.system("chsh -s /bin/zsh")
+
+    # Añadiendo scripts personaliados de s4vitar. extractPorts, whichSystem...
+    os.systyem("sudo cp tools/whichSystem.py /bin")
+    os.system("cat tools/mkt.txt >> ~/.zshrc")
+    os.system("cat tools/extractPorts >> ~/.zshrc")
+    os.system("sudo cp tools/wichSystem.py /bin")
 
     print("\n[+] POLYBAR INSTALADO!!!")
 if __name__ == '__main__':
