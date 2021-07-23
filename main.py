@@ -209,5 +209,7 @@ def polybar():
     os.system("sudo cp tools/wichSystem.py /bin")
 
     print("\n[+] POLYBAR INSTALADO!!!")
+    red()
+    print("\n[+] Hace falta un reinicio para que no hayan problemas con la powerlever10k!")
 if __name__ == '__main__':
     menu()
