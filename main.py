@@ -212,6 +212,13 @@ def polybar():
     os.system("cat tools/extractPorts.txt >> ~/.bashrc")
     os.system("chmod +x tools/wichSystem.py")
     os.system("sudo cp tools/wichSystem.py /bin")
+    
+    # Instalando Hack Nerd Fonts
+    
+    os.system("cp tools/Hack.zip .")
+    os.system("unzip Hack.zip")
+    os.system("sudo mv *.ttf /usr/share/fonts")
+    os.system("rm *.zip")
 
     print("\n[+] POLYBAR INSTALADO!!!")
 if __name__ == '__main__':
