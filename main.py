@@ -198,8 +198,8 @@ def polybar():
     os.system("sudo chmod +x /bin/cleartarget")
 
     # Instalacion de powerlevel10k
-    os.system("git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k")
-    os.system("echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc")
+    #os.system("git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k")
+    #os.system("echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc")
     #os.system("chsh -s /bin/zsh")
 
     # Añadiendo scripts personaliados de s4vitar. extractPorts, whichSystem...
