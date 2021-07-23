@@ -9,7 +9,6 @@ def green():
     GREEN = "\033[0;32m"
     stdout.write(GREEN)
 
-
 def blue():
     BLUE = "\033[1;34m"
     stdout.write(BLUE)
@@ -206,7 +205,7 @@ def polybar():
     # Añadiendo scripts personaliados de s4vitar. extractPorts, whichSystem...
     os.system("sudo cp tools/wichSystem.py /bin")
     os.system("cat tools/mkt.txt >> ~/.zshrc")
-    os.system("cat tools/extractPorts >> ~/.zshrc")
+    os.system("cat tools/extractPorts.txt >> ~/.zshrc")
     os.system("sudo cp tools/wichSystem.py /bin")
 
     print("\n[+] POLYBAR INSTALADO!!!")
