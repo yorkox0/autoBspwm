@@ -206,6 +206,9 @@ def polybar():
     os.system("sudo cp tools/wichSystem.py /bin")
     os.system("cat tools/mkt.txt >> ~/.zshrc")
     os.system("cat tools/extractPorts.txt >> ~/.zshrc")
+    os.system("cat tools/mkt.txt >> ~/.bashrc")
+    os.system("cat tools/extractPorts.txt >> ~/.bashrc")
+    os.system("chmod +x tools/wichSystem.py")
     os.system("sudo cp tools/wichSystem.py /bin")
 
     print("\n[+] POLYBAR INSTALADO!!!")
