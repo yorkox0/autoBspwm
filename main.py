@@ -78,8 +78,6 @@ def req():
 
     time.sleep(2)
     print("[+] Requetimientos instalados correctamente")
-    while True:
-        menu()
 
 def bspwm():
     green()
@@ -119,9 +117,6 @@ def bspwm():
     os.system("sudo rm -r contrib/ doc/ examples/ src/ grab.o helpers.o LICENSE Makefile parse.o README.md Sourcedeps sxhkd sxhkd.o types.o VERSION")
     os.system("cp tools/sxhkdrc ~/.config/sxhkd")
     print("\n[+] Bspwm instalado correctamente!")
-
-    while True:
-        menu()
 
 def polybar():
     green()
