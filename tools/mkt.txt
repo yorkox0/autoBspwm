@@ -1,0 +1,3 @@
+function mkt(){
+	    mkdir -p $1/{scans,scripts,exploits,content}
+}
