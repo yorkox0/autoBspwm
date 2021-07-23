@@ -204,7 +204,7 @@ def polybar():
     os.system("chsh -s /bin/zsh")
 
     # Añadiendo scripts personaliados de s4vitar. extractPorts, whichSystem...
-    os.system("sudo cp tools/whichSystem.py /bin")
+    os.system("sudo cp tools/wichSystem.py /bin")
     os.system("cat tools/mkt.txt >> ~/.zshrc")
     os.system("cat tools/extractPorts >> ~/.zshrc")
     os.system("sudo cp tools/wichSystem.py /bin")
