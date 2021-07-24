@@ -171,10 +171,10 @@ def polybar():
     os.system("mkdir ~/.config/bin")
 
     # Mete el ethernet_status.sh, hackthebox_status.sh, target_to_hack.sh y target en ~/.config/bin
-    os.system("wget https://raw.githubusercontent.com/LevisWings/Auto-PWE/main/ethernet_status.sh")
+    os.system("wget https://raw.githubusercontent.com/yorkox0/exaple01/main/ethernet_status.sh")
     os.system("chmod +x ethernet_status.sh 2>/dev/null")
     os.system("mv ethernet_status.sh ~/.config/bin")
-    os.system("wget https://raw.githubusercontent.com/LevisWings/Auto-PWE/main/hackthebox.sh")
+    os.system("wget https://raw.githubusercontent.com/yorkox0/exaple01/main/hackthebox.sh")
     os.system("chmod +x hackthebox.sh")
     os.system("mv hackthebox.sh ~/.config/bin")
     os.system("cp tools/target_to_hack.sh .")
