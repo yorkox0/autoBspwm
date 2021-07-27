@@ -209,8 +209,8 @@ def polybar():
     os.system("sudo cp tools/mkt /bin")
     os.system("chmod +x tools/extractPorts")
     os.system("sudo cp tools/extractPorts /bin")
-    os.system("chmod +x tools/wichSystem.py")
     os.system("sudo cp tools/wichSystem.py /bin")
+    os.system("sudo chmod +x /bin/wichSystem.py")
 
     # Instalando Hack Nerd Fonts
     os.system("cp tools/Hack.zip .")
