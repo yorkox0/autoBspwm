@@ -204,7 +204,7 @@ def polybar():
 
     # Añadiendo scripts personaliados de s4vitar. extractPorts, whichSystem...
     os.system("sudo cp tools/wichSystem.py /bin")
-    os.system("echo '' >> ~/.bashrc")
+    #os.system("echo '' >> ~/.bashrc")
     os.system("cat tools/mkt.txt >> ~/.zshrc")
     os.system("echo '' >> ~/.zshrc")
     os.system("cat tools/extractPorts.txt >> ~/.zshrc")
