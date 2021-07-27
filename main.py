@@ -218,13 +218,6 @@ def polybar():
     os.system("sudo mv *.ttf /usr/share/fonts")
     os.system("rm *.zip")
 
-    # Instalando PowerMenu2.0
-    os.system("git clone https://github.com/lu0/rofi-blurry-powermenu")
-    os.system("cp -r rofi-blurry-powermenu/* ~/.config/polybar/scripts/")
-    os.system("mv ~/.config/polybar/scripts/powermenu.sh ~/.config/polybar/scripts/powermenu")
-    os.system("chmod +x ~/.config/polybar/scripts/powermenu")
-    os.system("sudo rm -r rofi-blurry-powermenu/")
-
     # Instalando tema de nvim
     os.system("wget https://github.com/arcticicestudio/nord-vim/archive/master.zip")
     os.system("unzip master.zip")
@@ -240,9 +233,9 @@ def polybar():
     os.system("echo 'syntax on' >> ~/.config/nvim/init.vim")
 
     # Instalando Oh My Tmux
-    os.system("git clone https://github.com/gpakosz/.tmux.git ~")
-    os.system("ln -s -f ~/.tmux/.tmux.conf ~")
-    os.system("cp ~/.tmux/.tmux.conf.local ~")
+    os.system("git clone https://github.com/gpakosz/.tmux.git")
+    os.system("ln -s -f oh-my-tmux/.tmux.conf ~/.tmux.conf")
+    os.system("cp oh-my-tmux/.tmux.conf.local ~/.tmux.conf.local")
 
     # Instalando fastTCPscan.go
     os.system("chmod +x tools/fastTCPscan.go")
