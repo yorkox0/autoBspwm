@@ -233,9 +233,9 @@ def polybar():
     os.system("echo 'syntax on' >> ~/.config/nvim/init.vim")
 
     # Instalando Oh My Tmux
-    os.system("git clone https://github.com/gpakosz/.tmux.git")
-    os.system("ln -s -f .tmux/.tmux.conf ~/.tmux.conf")
-    os.system("cp .tmux/.tmux.conf.local ~/.tmux.conf.local")
+    os.system("git clone https://github.com/gpakosz/.tmux.git /home/$USER/.tmux")
+    os.system("ln -s -f .tmux/.tmux.conf /home/$USER")
+    os.system("cp ../.tmux/.tmux.conf.local /home/$USER")
 
     # Instalando fastTCPscan.go
     os.system("chmod +x tools/fastTCPscan.go")
