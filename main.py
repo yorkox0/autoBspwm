@@ -202,6 +202,10 @@ def polybar():
     os.system("git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k")
     os.system("echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc")
     #os.system("chsh -s /bin/zsh")
+    
+    # Instalacion de powerlevel10k para root
+    os.system("sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k")
+    os.system("sudo echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> /root/.zshrc")
 
     # Añadiendo scripts personaliados de s4vitar. extractPorts, whichSystem...
     os.system("sudo cp tools/wichSystem.py /bin")
@@ -236,6 +240,11 @@ def polybar():
     os.system("git clone https://github.com/gpakosz/.tmux.git /home/$USER/.tmux")
     os.system("ln -s -f .tmux/.tmux.conf /home/$USER")
     os.system("cp ../.tmux/.tmux.conf.local /home/$USER")
+    
+    # Instalando Oh My Tmux para root
+    os.system("sudo git clone https://github.com/gpakosz/.tmux.git /root/.tmux")
+    os.system("sudo ln -s -f .tmux/.tmux.conf /root")
+    os.system("sudo cp ../.tmux/.tmux.conf.local /root")
 
     # Instalando fastTCPscan.go
     os.system("chmod +x tools/fastTCPscan.go")
