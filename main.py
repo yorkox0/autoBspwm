@@ -244,7 +244,7 @@ def polybar():
     # Instalando Oh My Tmux para root
     os.system("sudo git clone https://github.com/gpakosz/.tmux.git /root/.tmux")
     os.system("sudo ln -s -f .tmux/.tmux.conf /root")
-    os.system("sudo cp ../.tmux/.tmux.conf.local /root")
+    os.system("sudo cp /home/$USER/.tmux/.tmux.conf.local /root")
 
     # Instalando fastTCPscan.go
     os.system("chmod +x tools/fastTCPscan.go")
