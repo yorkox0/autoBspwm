@@ -1,4 +1,4 @@
-# autoBspwm
+# AutoBspwm
 Este script añade la config de s4vitar a bspwm automaticamente!
 
 # Instalacion
