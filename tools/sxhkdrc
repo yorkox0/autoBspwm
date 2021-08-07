@@ -125,4 +125,4 @@ alt + super + {Left,Down,Up,Right}
     /home/kali/.config/bspwm/scripts/bspwm_resize {west,south,north,east}
 # firefox
 super + shift + f
-        firejail /usr/bin/firefox
+        firejail firefox
