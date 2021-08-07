@@ -35,33 +35,24 @@ banner = """
 """
 
 def menu():
+    os.system("clear")
     red()
     print(banner)
     blue()
     time.sleep(1)
-    print("1 -> Instalar Requerimientos necesarios\n")
-    print("2 -> Instalar bspwm\n")
-    print("3 -> Instalar Polybar, picom, nvim, rofi\n")
-    print("4 -> Instalar p10k, bat y lsd\n")
-    print("5 -> All In One\n")
-    print("6 -> Salir\n")
+    print("1 -> Instalar Entorno de trabajo\n")
+    print("2 -> Instalar p10k (ejecutar como root)\n")
+    print("3 -> Salir\n")
 
     option = input("\n-->> ")
 
     if option == "1":
         req()
+        bspwm()
+        polybar()
     if option == "2":
-        bspwm()
+        p10k()
     if option == "3":
-        polybar()
-    if option == "4":
-        p10k()
-    if option == "5":
-        req()
-        bspwm()
-        polybar()
-        p10k()
-    if option == "6":
         exit()
 
 def req():
@@ -89,9 +80,8 @@ def bspwm():
     os.system("sudo rm -r bspwm/")
     os.system("make")
 
-    # Crea directorio para fondo de pantalla
-    os.system("mkdir ~/Desktop/Images")
-    os.system("cp tools/fondo.jpg ~/Desktop/Images")
+    # Fondo de pantalla
+    os.system("cp tools/fondo.jpg /tmp")
 
     # Acava del build
     os.system("sudo make install")
@@ -253,17 +243,19 @@ def polybar():
     os.system("chmod +x tools/fastTCPscan.go")
     os.system("sudo cp tools/fastTCPscan.go /bin")
 
-    print("\n[+] POLYBAR, NVIM, TMUX, HNF, ROFI y PICOM INSTALADOS!!!")
-
+    print("\n[+] POLYBAR, NVIM, TMUX, HNF, ROFI y PICOM INSTALADOS!!!\n")
+    print("Para finalizar la instalación ejecuta la segunda parte como root")
 
 def p10k():
     green()
 
+    user = input("Introduce el nombre de usuario con bajos privilegios (ej: kali): ")
+
     # Clona la repo de powerlvl10k
-    os.system("git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /home/kali/powerlevel10k")
-    os.system("echo '' >> /home/kali/.zshrc")
-    os.system("echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>/home/kali/.zshrc")
-    os.system("echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >>/home/kali/.zshrc")
+    os.system(f"git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /home/{user}/powerlevel10k")
+    os.system(f"echo '' >> /home/{user}/.zshrc")
+    os.system(f"echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>/home/{user}/.zshrc")
+    os.system(f"echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >>/home/{user}/.zshrc")
 
     os.system("sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k")
     os.system("sudo echo '' >> /root/.zshrc")
@@ -271,22 +263,22 @@ def p10k():
     os.system("sudo echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >>/root/.zshrc")
 
     #Actualizar la informacion de powerlvl10k
-    os.system("cp tools/p10k.zsh /home/kali/.p10k.zsh")
+    os.system(f"cp tools/p10k.zsh /home/{user}/.p10k.zsh")
     os.system("cp tools/sudo/p10k.zsh /root/.p10k.zsh")
 
     #Asignamos la zsh a tu usuario principal y root
-    os.system("usermod --shell /usr/bin/zsh kali")
+    os.system(f"usermod --shell /usr/bin/zsh {user}")
     os.system("usermod --shell /usr/bin/zsh root")
 
     #Aliaseamos bat y lsd para usuario normal
-    os.system("echo '' >>/home/kali/.zshrc")
-    os.system("echo \"alias cat='/bin/bat'\" >>/home/kali/.zshrc")
-    os.system("echo \"alias catn='/bin/cat'\" >>/home/kali/.zshrc")
-    os.system("echo \"alias ll='lsd -lh --group-dirs=first'\" >>/home/kali/.zshrc")
-    os.system("echo \"alias la='lsd -a --group-dirs=first'\" >>/home/kali/.zshrc")
-    os.system("echo \"alias l='lsd --group-dirs=first'\" >>/home/kali/.zshrc")
-    os.system("echo \"alias lla='lsd -lha --group-dirs=first'\" >>/home/kali/.zshrc")
-    os.system("echo \"alias ls='lsd --group-dirs=first'\" >>/home/kali/.zshrc")
+    os.system(f"echo '' >>/home/{user}/.zshrc")
+    os.system(f"echo \"alias cat='/bin/bat'\" >>/home/{user}/.zshrc")
+    os.system(f"echo \"alias catn='/bin/cat'\" >>/home/{user}/.zshrc")
+    os.system(f"echo \"alias ll='lsd -lh --group-dirs=first'\" >>/home/{user}/.zshrc")
+    os.system(f"echo \"alias la='lsd -a --group-dirs=first'\" >>/home/{user}/.zshrc")
+    os.system(f"echo \"alias l='lsd --group-dirs=first'\" >>/home/{user}/.zshrc")
+    os.system(f"echo \"alias lla='lsd -lha --group-dirs=first'\" >>/home/{user}/.zshrc")
+    os.system(f"echo \"alias ls='lsd --group-dirs=first'\" >>/home/{user}/.zshrc")
 
     #Aliaseamos bat y lsd para root
     os.system("sudo echo '' >>/root/.zshrc")
