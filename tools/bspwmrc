@@ -17,7 +17,7 @@ bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
-feh --bg-fill ~/Desktop/Images/fondo.jpg
+feh --bg-fill /tmp/fondo.jpg
 setxkbmap es sundeadkeys
 ~/.config/polybar/./launch.sh
 picom --experimental-backends &
