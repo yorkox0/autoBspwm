@@ -1,13 +1,13 @@
 # AutoBspwm
 Este script instala y configura el entorno de trabajo de S4vitar con Bspwm de forma automática.
-(Tested on kali)
+(Tested on Kali)
 
 # Instalacion
 
 ```
 git clone https://github.com/yorkox0/autoBspwm
 cd autoBspwm
-sudo python3 main.py
+sudo python3 main.py (Importante correrlo como root)
 ```
 
 # Menu de Inicio
