@@ -75,8 +75,8 @@ def req():
     os.system("sudo apt install bspwm rofi caja feh gnome-terminal -y")
     os.system("sudo apt install firejail")
     os.system("sudo apt install xclip")
-    os.system("dpkg -i bat.deb")
-    os.system("dpkg -i lsd.deb")
+    os.system("sudo dpkg -i tools/bat.deb")
+    os.system("sudo dpkg -i tools/lsd.deb")
     time.sleep(2)
     print("[+] Requetimientos instalados correctamente")
 
@@ -265,17 +265,17 @@ def p10k():
     os.system("echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>/home/kali/.zshrc")
     os.system("echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >>/home/kali/.zshrc")
 
-    os.system("git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k")
-    os.system("echo '' >> /root/.zshrc")
-    os.system("echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>/root/.zshrc")
-    os.system("echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >>/root/.zshrc")
+    os.system("sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k")
+    os.system("sudo echo '' >> /root/.zshrc")
+    os.system("sudo echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>/root/.zshrc")
+    os.system("sudo echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >>/root/.zshrc")
 
     #Actualizar la informacion de powerlvl10k
     os.system("cp tools/p10k.zsh /home/kali/.p10k.zsh")
     os.system("cp tools/sudo/p10k.zsh /root/.p10k.zsh")
 
     #Asignamos la zsh a tu usuario principal y root
-    os.system(f"usermod --shell /usr/bin/zsh kali")
+    os.system("usermod --shell /usr/bin/zsh kali")
     os.system("usermod --shell /usr/bin/zsh root")
 
     #Aliaseamos bat y lsd para usuario normal
@@ -289,14 +289,14 @@ def p10k():
     os.system("echo \"alias ls='lsd --group-dirs=first'\" >>/home/kali/.zshrc")
 
     #Aliaseamos bat y lsd para root
-    os.system("echo '' >>/root/.zshrc")
-    os.system("echo \"alias cat='/bin/bat'\" >>/root/.zshrc")
-    os.system("echo \"alias catn='/bin/cat'\" >>/root/.zshrc")
-    os.system("echo \"alias ll='lsd -lh --group-dirs=first'\" >>/root/.zshrc")
-    os.system("echo \"alias la='lsd -a --group-dirs=first'\" >>/root/.zshrc")
-    os.system("echo \"alias l='lsd --group-dirs=first'\" >>/root/.zshrc")
-    os.system("echo \"alias lla='lsd -lha --group-dirs=first'\" >>/root/.zshrc")
-    os.system("echo \"alias ls='lsd --group-dirs=first'\" >>/root/.zshrc")
+    os.system("sudo echo '' >>/root/.zshrc")
+    os.system("sudo echo \"alias cat='/bin/bat'\" >>/root/.zshrc")
+    os.system("sudo echo \"alias catn='/bin/cat'\" >>/root/.zshrc")
+    os.system("sudo echo \"alias ll='lsd -lh --group-dirs=first'\" >>/root/.zshrc")
+    os.system("sudo echo \"alias la='lsd -a --group-dirs=first'\" >>/root/.zshrc")
+    os.system("sudo echo \"alias l='lsd --group-dirs=first'\" >>/root/.zshrc")
+    os.system("sudo echo \"alias lla='lsd -lha --group-dirs=first'\" >>/root/.zshrc")
+    os.system("sudo echo \"alias ls='lsd --group-dirs=first'\" >>/root/.zshrc")
     print("\n[+] P10K, BAT y LSD INSTALADOS!!!")
 
 
