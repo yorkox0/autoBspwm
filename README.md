@@ -7,7 +7,7 @@ Este script instala y configura el entorno de trabajo de S4vitar con Bspwm de fo
 ```
 git clone https://github.com/yorkox0/autoBspwm
 cd autoBspwm
-sudo python3 main.py (Importante correrlo como root)
+python3 main.py
 ```
 # Fix
 
