@@ -82,7 +82,7 @@ def bspwm():
 
     # Fondo de pantalla
     os.system("sudo mkdir /opt/Images")
-    os.system("cp tools/fondo.jpg /opt/Images/fondo.jpg")
+    os.system("sudo cp tools/fondo.jpg /opt/Images/fondo.jpg")
 
     # Acava del build
     os.system("sudo make install")
