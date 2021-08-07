@@ -9,10 +9,17 @@ git clone https://github.com/yorkox0/autoBspwm
 cd autoBspwm
 sudo python3 main.py (Importante correrlo como root)
 ```
+# Fix
+
+Si la zsh da un error al abrir la consola hazlo siguiente:
+```
+sudo nano /home/TU_USUARIO/.zshrc 
+```
+luego haz CTRL+S para guardar cambios y reinicia.
 
 # Menu de Inicio
 
-  <img src="https://i.imgur.com/5iSMXBV.png" />
+  <img src="https://i.imgur.com/iofNJ8c.png" />
 
 # Resultado Final
 
