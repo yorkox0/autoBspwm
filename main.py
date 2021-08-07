@@ -41,14 +41,11 @@ def menu():
     time.sleep(1)
     print("1 -> Instalar Requerimientos necesarios\n")
     print("2 -> Instalar bspwm\n")
-    print("3 -> Instalar Polybar\n")
-    print("4 -> Instalar p10k\n")
+    print("3 -> Instalar Polybar, picom, nvim, rofi\n")
+    print("4 -> Instalar p10k, bat y lsd\n")
     print("5 -> All In One\n")
     print("6 -> Salir\n")
-    time.sleep(1)
 
-    usuario = input("Introduce el nombre de tu usuario de bajos privilegios(Ej: kali): ")
-    time.sleep(1)
     option = input("\n-->> ")
 
     if option == "1":
@@ -77,7 +74,9 @@ def req():
     os.system("sudo apt install meson libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev libpcre2-dev libevdev-dev uthash-dev libev-dev libx11-xcb-dev libxcb-glx0-dev -y")
     os.system("sudo apt install bspwm rofi caja feh gnome-terminal -y")
     os.system("apt install firejail")
-
+    os.system("apt install xclip")
+    os.system("dpkg -i bat.deb")
+    os.system("dpkg -i lsd.deb")
     time.sleep(2)
     print("[+] Requetimientos instalados correctamente")
 
@@ -219,36 +218,86 @@ def polybar():
     os.system("cat tools/extractPorts.txt >> ~/.bashrc")
     os.system("chmod +x tools/wichSystem.py")
     os.system("sudo cp tools/wichSystem.py /bin")
-    
+
     # Instalando Hack Nerd Fonts
     os.system("cp tools/Hack.zip .")
     os.system("unzip Hack.zip")
     os.system("sudo mv *.ttf /usr/share/fonts")
     os.system("rm *.zip")
 
-    print("\n[+] POLYBAR INSTALADO!!!")
+    # Instalando tema de nvim
+    os.system("wget https://github.com/arcticicestudio/nord-vim/archive/master.zip")
+    os.system("unzip master.zip")
+    os.system("rm master.zip")
+    os.system("mkdir ~/.config/nvim")
+    os.system("mv nord-vim-master/colors/ ~/.config/nvim")
+    os.system("sudo rm -r nord-vim-master/")
+    os.system("wget https://raw.githubusercontent.com/Necros1s/lotus/master/lotus.vim")
+    os.system("wget https://raw.githubusercontent.com/Necros1s/lotus/master/lotusbar.vim")
+    os.system("wget https://raw.githubusercontent.com/Necros1s/lotus/master/init.vim")
+    os.system("mv *.vim ~/.config/nvim")
+    os.system("echo 'colorscheme nord' >> ~/.config/nvim/init.vim")
+    os.system("echo 'syntax on' >> ~/.config/nvim/init.vim")
+
+    # Instalando Oh My Tmux
+    os.system("git clone https://github.com/gpakosz/.tmux.git /home/$USER/.tmux")
+    os.system("ln -s -f .tmux/.tmux.conf /home/$USER")
+    os.system("cp /home/$USER/.tmux/.tmux.conf.local /home/$USER")
+
+    # Instalando Oh My Tmux para root
+    os.system("sudo git clone https://github.com/gpakosz/.tmux.git /root/.tmux")
+    os.system("sudo ln -s -f .tmux/.tmux.conf /root")
+    os.system("sudo cp /root/.tmux/.tmux.conf.local /root")
+
+    # Instalando fastTCPscan.go
+    os.system("chmod +x tools/fastTCPscan.go")
+    os.system("sudo cp tools/fastTCPscan.go /bin")
+
+    print("\n[+] POLYBAR, NVIM, TMUX, HNF, ROFI y PICOM INSTALADOS!!!")
 
 
 def p10k():
     green()
 
     # Clona la repo de powerlvl10k
-    os.system("git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k")
-    os.system("echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc")
+    os.system("git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /home/kali/powerlevel10k")
+    os.system("echo '' >> /home/kali/.zshrc")
+    os.system("echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>/home/kali/.zshrc")
+    os.system("echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >>/home/kali/.zshrc")
 
-    # Spawnear menu de configuracion de powerlvl10k
-    os.system("zsh")
+    os.system("git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k")
+    os.system("echo '' >> /root/.zshrc")
+    os.system("echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>/root/.zshrc")
+    os.system("echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >>/root/.zshrc")
 
     #Actualizar la informacion de powerlvl10k
-    os.system("rm ~/.p10k.zsh")
-    os.system("cp tools/p10k.zsh ~/.p10k.zsh")
+    os.system("cp tools/p10k.zsh /home/kali/.p10k.zsh")
     os.system("cp tools/sudo/p10k.zsh /root/.p10k.zsh")
 
     #Asignamos la zsh a tu usuario principal y root
-    os.system(f"usermod --shell /usr/bin/zsh {usuario}")
+    os.system(f"usermod --shell /usr/bin/zsh kali")
     os.system("usermod --shell /usr/bin/zsh root")
 
-    print("\n[+] P10K INSTALADO!!!")
+    #Aliaseamos bat y lsd para usuario normal
+    os.system("echo '' >>/home/kali/.zshrc")
+    os.system("echo \"alias cat='/bin/bat'\" >>/home/kali/.zshrc")
+    os.system("echo \"alias catn='/bin/cat'\" >>/home/kali/.zshrc")
+    os.system("echo \"alias ll='lsd -lh --group-dirs=first'\" >>/home/kali/.zshrc")
+    os.system("echo \"alias la='lsd -a --group-dirs=first'\" >>/home/kali/.zshrc")
+    os.system("echo \"alias l='lsd --group-dirs=first'\" >>/home/kali/.zshrc")
+    os.system("echo \"alias lla='lsd -lha --group-dirs=first'\" >>/home/kali/.zshrc")
+    os.system("echo \"alias ls='lsd --group-dirs=first'\" >>/home/kali/.zshrc")
+
+    #Aliaseamos bat y lsd para root
+    os.system("echo '' >>/root/.zshrc")
+    os.system("echo \"alias cat='/bin/bat'\" >>/root/.zshrc")
+    os.system("echo \"alias catn='/bin/cat'\" >>/root/.zshrc")
+    os.system("echo \"alias ll='lsd -lh --group-dirs=first'\" >>/root/.zshrc")
+    os.system("echo \"alias la='lsd -a --group-dirs=first'\" >>/root/.zshrc")
+    os.system("echo \"alias l='lsd --group-dirs=first'\" >>/root/.zshrc")
+    os.system("echo \"alias lla='lsd -lha --group-dirs=first'\" >>/root/.zshrc")
+    os.system("echo \"alias ls='lsd --group-dirs=first'\" >>/root/.zshrc")
+    print("\n[+] P10K, BAT y LSD INSTALADOS!!!")
 
 
 if __name__ == '__main__':
