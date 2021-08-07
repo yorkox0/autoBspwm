@@ -146,11 +146,6 @@ def polybar():
     # Elimina los archivos de picom
     os.system("sudo rm -r *.md *.conf *.desktop *.txt *.build *.spdx *.glsl COPYING Doxyfile CONTRIBUTORS bin/ build/ dbus-examples/ LICENSES/ man/ media/ meson/ src/ subprojects/ tests/")
 
-    # Añade el wallpaper
-    os.system("mkdir ~/.wallpapers")
-    os.system("mv tools/wallpaper.jpg ~/.wallpapers")
-    os.system("echo 'feh --bg-fill ~/.wallpapers/wallpaper.jpg' >> ~/.config/bspwm/bspwmrc")
-
     # Clona el tema de blue-sky
     os.system("git clone https://github.com/VaughnValle/blue-sky.git")
     os.system("mkdir ~/.config/polybar")
