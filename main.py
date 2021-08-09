@@ -208,13 +208,7 @@ def polybar():
     os.system("sudo echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> /root/.zshrc")
 
     # Añadiendo scripts personaliados de s4vitar. extractPorts, whichSystem...
-    os.system("sudo cp tools/wichSystem.py /bin")
-    os.system("chmod +x tools/mkt")
-    os.system("sudo cp tools/mkt /bin")
-    os.system("chmod +x tools/extractPorts")
-    os.system("sudo cp tools/extractPorts /bin")
-    os.system("sudo cp tools/wichSystem.py /bin")
-    os.system("sudo chmod +x /bin/wichSystem.py")
+    os.system("cp tools/zshrc_conf ~/.zshrc")
 
     # Instalando Hack Nerd Fonts
     os.system("cp tools/Hack.zip .")
