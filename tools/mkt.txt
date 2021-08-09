@@ -1,3 +1,0 @@
-function mkt(){
-	    mkdir nmap tmp scripts exploits content
-}
