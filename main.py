@@ -192,18 +192,8 @@ def polybar():
     os.system("sudo chmod +x /bin/cleartarget")
 
 
-    # Añadiendo scripts personaliados de s4vitar. extractPorts, whichSystem...
-    os.system("sudo cp tools/wichSystem.py /bin")
-    os.system("echo '' >> ~/.bashrc")
-    os.system("cat tools/mkt.txt >> ~/.zshrc")
-    os.system("echo '' >> ~/.zshrc")
-    os.system("cat tools/extractPorts.txt >> ~/.zshrc")
-    os.system("echo '' >> ~/.bashrc")
-    os.system("cat tools/mkt.txt >> ~/.bashrc")
-    os.system("echo '' >> ~/.bashrc")
-    os.system("cat tools/extractPorts.txt >> ~/.bashrc")
-    os.system("chmod +x tools/wichSystem.py")
-    os.system("sudo cp tools/wichSystem.py /bin")
+    # Añadiendo scripts personaliados de s4vitar. extra
+    os.system("cp tools/zshrc_conf ~/.zshrc")
 
     # Instalando Hack Nerd Fonts
     os.system("cp tools/Hack.zip .")
