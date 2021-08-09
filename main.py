@@ -35,34 +35,24 @@ banner = """
 """
 
 def menu():
+    os.system("clear")
     red()
     print(banner)
     blue()
     time.sleep(1)
-    print("1 -> Instalar Requerimientos necesarios")
-    time.sleep(1)
-    print("\n2 -> Instalar bspwm")
-    time.sleep(1)
-    print("\n3 -> Instalar Polybar")
-    time.sleep(1)
-    print("\n4 -> All In One")
-    time.sleep(1)
-    print("\n5 -> Salir")
-    time.sleep(1)
+    print("1 -> Instalar Entorno de trabajo\n")
+    print("2 -> Instalar p10k (ejecutar como root)\n")
+    print("3 -> Salir\n")
 
     option = input("\n-->> ")
 
     if option == "1":
         req()
+        bspwm()
+        polybar()
     if option == "2":
-        bspwm()
+        p10k()
     if option == "3":
-        polybar()
-    if option == "4":
-        req()
-        bspwm()
-        polybar()
-    if option == "5":
         exit()
 
 def req():
@@ -73,8 +63,11 @@ def req():
     os.system("sudo apt install build-essential git vim xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev -y")
     os.system("sudo apt install cmake cmake-data pkg-config python3-sphinx libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python3-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev libasound2-dev libpulse-dev libjsoncpp-dev libmpdclient-dev libcurl4-openssl-dev libnl-genl-3-dev -y")
     os.system("sudo apt install meson libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev libpcre2-dev libevdev-dev uthash-dev libev-dev libx11-xcb-dev libxcb-glx0-dev -y")
-    os.system("sudo apt install bspwm rofi caja feh gnome-terminal scrot neovim xclip tmux -y")
-
+    os.system("sudo apt install bspwm rofi caja feh gnome-terminal scrot neovim tmux -y")
+    os.system("sudo apt install firejail")
+    os.system("sudo apt install xclip")
+    os.system("sudo dpkg -i tools/bat.deb")
+    os.system("sudo dpkg -i tools/lsd.deb")
     time.sleep(2)
     print("[+] Requetimientos instalados correctamente")
 
@@ -86,6 +79,10 @@ def bspwm():
     os.system("mv bspwm/* .")
     os.system("sudo rm -r bspwm/")
     os.system("make")
+
+    # Fondo de pantalla
+    os.system("sudo mkdir /opt/Images")
+    os.system("sudo cp tools/fondo.jpg /opt/Images/fondo.jpg")
 
     # Acava del build
     os.system("sudo make install")
@@ -109,6 +106,8 @@ def bspwm():
     os.system("cp examples/bspwmrc ~/.config/bspwm/")
 
     # Les da permisos de ejecucion a bspwmrc
+    os.system("rm ~/.config/bspwm/bspwmrc")
+    os.system("cp tools/bspwmrc ~/.config/bspwm/bspwmrc")
     os.system("chmod +x ~/.config/bspwm/bspwmrc")
     os.system("cp examples/sxhkdrc ~/.config/sxhkd/")
 
@@ -146,12 +145,6 @@ def polybar():
 
     # Elimina los archivos de picom
     os.system("sudo rm -r *.md *.conf *.desktop *.txt *.build *.spdx *.glsl COPYING Doxyfile CONTRIBUTORS bin/ build/ dbus-examples/ LICENSES/ man/ media/ meson/ src/ subprojects/ tests/")
-
-    # Añade el wallpaper
-    os.system("mkdir ~/.wallpapers")
-    os.system("mv tools/wallpaper.jpg ~/.wallpapers")
-    os.system("echo 'feh --bg-fill ~/.wallpapers/wallpaper.jpg' >> ~/.config/bspwm/bspwmrc")
-    os.system("echo 'xsetroot -cursor_name left_ptr &' >> ~/.config/bspwm/bspwmrc")
 
     # Clona el tema de blue-sky
     os.system("git clone https://github.com/VaughnValle/blue-sky.git")
@@ -198,16 +191,8 @@ def polybar():
     os.system("sudo chmod +x /bin/settarget")
     os.system("sudo chmod +x /bin/cleartarget")
 
-    # Instalacion de powerlevel10k
-    os.system("git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k")
-    os.system("echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc")
-    #os.system("chsh -s /bin/zsh")
-    
-    # Instalacion de powerlevel10k para root
-    os.system("sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k")
-    os.system("sudo echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> /root/.zshrc")
 
-    # Añadiendo scripts personaliados de s4vitar. extractPorts, whichSystem...
+    # Añadiendo scripts personaliados de s4vitar. extra
     os.system("cp tools/zshrc_conf ~/.zshrc")
 
     # Instalando Hack Nerd Fonts
@@ -234,7 +219,7 @@ def polybar():
     os.system("git clone https://github.com/gpakosz/.tmux.git /home/$USER/.tmux")
     os.system("ln -s -f .tmux/.tmux.conf /home/$USER")
     os.system("cp /home/$USER/.tmux/.tmux.conf.local /home/$USER")
-    
+
     # Instalando Oh My Tmux para root
     os.system("sudo git clone https://github.com/gpakosz/.tmux.git /root/.tmux")
     os.system("sudo ln -s -f .tmux/.tmux.conf /root")
@@ -244,7 +229,54 @@ def polybar():
     os.system("chmod +x tools/fastTCPscan.go")
     os.system("sudo cp tools/fastTCPscan.go /bin")
 
-    print("\n[+] POLYBAR INSTALADO!!!")
+    print("\n[+] POLYBAR, NVIM, TMUX, HNF, ROFI y PICOM INSTALADOS!!!\n")
+    print("Para finalizar la instalación ejecuta la segunda parte como root")
+
+def p10k():
+    green()
+
+    user = input("Introduce el nombre de usuario con bajos privilegios (ej: kali): ")
+
+    # Clona la repo de powerlvl10k
+    os.system(f"git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /home/{user}/powerlevel10k")
+    os.system(f"echo '' >> /home/{user}/.zshrc")
+    os.system(f"echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>/home/{user}/.zshrc")
+    os.system(f"echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >>/home/{user}/.zshrc")
+
+    os.system("sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k")
+    os.system("sudo echo '' >> /root/.zshrc")
+    os.system("sudo echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>/root/.zshrc")
+    os.system("sudo echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >>/root/.zshrc")
+
+    #Actualizar la informacion de powerlvl10k
+    os.system(f"cp tools/p10k.zsh /home/{user}/.p10k.zsh")
+    os.system("cp tools/sudo/p10k.zsh /root/.p10k.zsh")
+
+    #Asignamos la zsh a tu usuario principal y root
+    os.system(f"usermod --shell /usr/bin/zsh {user}")
+    os.system("usermod --shell /usr/bin/zsh root")
+
+    #Aliaseamos bat y lsd para usuario normal
+    os.system(f"echo '' >>/home/{user}/.zshrc")
+    os.system(f"echo \"alias cat='/bin/bat'\" >>/home/{user}/.zshrc")
+    os.system(f"echo \"alias catn='/bin/cat'\" >>/home/{user}/.zshrc")
+    os.system(f"echo \"alias ll='lsd -lh --group-dirs=first'\" >>/home/{user}/.zshrc")
+    os.system(f"echo \"alias la='lsd -a --group-dirs=first'\" >>/home/{user}/.zshrc")
+    os.system(f"echo \"alias l='lsd --group-dirs=first'\" >>/home/{user}/.zshrc")
+    os.system(f"echo \"alias lla='lsd -lha --group-dirs=first'\" >>/home/{user}/.zshrc")
+    os.system(f"echo \"alias ls='lsd --group-dirs=first'\" >>/home/{user}/.zshrc")
+
+    #Aliaseamos bat y lsd para root
+    os.system("sudo echo '' >>/root/.zshrc")
+    os.system("sudo echo \"alias cat='/bin/bat'\" >>/root/.zshrc")
+    os.system("sudo echo \"alias catn='/bin/cat'\" >>/root/.zshrc")
+    os.system("sudo echo \"alias ll='lsd -lh --group-dirs=first'\" >>/root/.zshrc")
+    os.system("sudo echo \"alias la='lsd -a --group-dirs=first'\" >>/root/.zshrc")
+    os.system("sudo echo \"alias l='lsd --group-dirs=first'\" >>/root/.zshrc")
+    os.system("sudo echo \"alias lla='lsd -lha --group-dirs=first'\" >>/root/.zshrc")
+    os.system("sudo echo \"alias ls='lsd --group-dirs=first'\" >>/root/.zshrc")
+    print("\n[+] P10K, BAT y LSD INSTALADOS!!!")
+
 
 if __name__ == '__main__':
     menu()
