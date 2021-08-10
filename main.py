@@ -149,7 +149,7 @@ def polybar():
 
     # Añade el wallpaper
     os.system("mkdir ~/.wallpapers")
-    os.system("mv tools/wallpaper.jpg ~/.wallpapers")
+    os.system("cp tools/wallpaper.jpg ~/.wallpapers")
     os.system("echo 'feh --bg-fill ~/.wallpapers/wallpaper.jpg' >> ~/.config/bspwm/bspwmrc")
     os.system("echo 'xsetroot -cursor_name left_ptr &' >> ~/.config/bspwm/bspwmrc")
 
@@ -157,12 +157,17 @@ def polybar():
     os.system("git clone https://github.com/VaughnValle/blue-sky.git")
     os.system("mkdir ~/.config/polybar")
 
-    # Copia el tema de blue-sky a la config de polybar
-    os.system("cp -r blue-sky/polybar/* ~/.config/polybar")
-    os.system("echo '~/.config/polybar/./launch.sh' >> ~/.config/bspwm/bspwmrc")
-    os.system("sudo cp blue-sky/polybar/fonts/* /usr/share/fonts/truetype")
-    os.system("fc-cache -v")
+    # Copia el tema de blue-sky a la config de polybar                                 |
+    #os.system("cp -r blue-sky/polybar/* ~/.config/polybar")                           |
+    #os.system("echo '~/.config/polybar/./launch.sh' >> ~/.config/bspwm/bspwmrc")      | #OLD SETTINGS
+    #os.system("sudo cp blue-sky/polybar/fonts/* /usr/share/fonts/truetype")           |
+    #os.system("fc-cache -v")                                                          |
 
+    # Copia el tema de polybar a ~/.config
+    os.system("cp tools/polybar-backup.zip .")
+    os.system("unzip polybar-backup.zip")
+    os.system("sudo mv polybar/ ~/.config/")
+    
     # Copia la config de picom
     os.system("mkdir ~/.config/picom")
     os.system("cp tools/picom.conf ~/.config/picom")
