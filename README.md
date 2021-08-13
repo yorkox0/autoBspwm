@@ -1,5 +1,5 @@
-Se ha testeado este script en parrot os, kali linux y ubuntu.
-Funciona para todos los sistemas operativos basados en debian.
+Se ha testeado este script en ParrotOS, Kali y ubuntu.
+Funciona para todos los sistemas operativos basados en Debian.
 
 # Instalación
 
