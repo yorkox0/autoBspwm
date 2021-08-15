@@ -169,6 +169,7 @@ def polybar():
     os.system("sudo mv polybar-backup/ ~/.config/")
     os.system("sudo rm -r ~/.config/polybar/ 2>/dev/null")
     os.system("sudo mv ~/.config/polybar-backup/ ~/.config/polybar/")
+    os.system("echo '~/.config/polybar/./launch.sh' >> ~/.config/bspwm/bspwmrc")
     
     # Copia la config de picom
     os.system("mkdir ~/.config/picom")
