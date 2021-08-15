@@ -166,7 +166,9 @@ def polybar():
     # Copia el tema de polybar a ~/.config
     os.system("cp tools/polybar-backup.zip .")
     os.system("unzip polybar-backup.zip")
-    os.system("sudo mv polybar-backup/ ~/.config/polybar/")
+    os.system("sudo mv polybar-backup/ ~/.config/")
+    os.system("sudo rm -r ~/.config/polybar/ 2>/dev/null")
+    os.system("sudo mv ~/.config/polybar-backup/ ~/.config/polybar/")
     
     # Copia la config de picom
     os.system("mkdir ~/.config/picom")
