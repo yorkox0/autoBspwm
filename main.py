@@ -178,6 +178,9 @@ def polybar():
     os.system("echo 'picom --experimental-backends &' >> ~/.config/bspwm/bspwmrc")
     os.system("echo 'bspc config border_width 0' >> ~/.config/bspwm/bspwmrc")
     os.system("mkdir ~/.config/bin")
+    
+    # Instalacion de Fuentes para Polybar
+    os.system("sudo cp ~/.config/polybar/fonts/* /usr/share/fonts")
 
     # Mete el ethernet_status.sh, hackthebox_status.sh, target_to_hack.sh y target en ~/.config/bin
     os.system("wget https://raw.githubusercontent.com/yorkox0/exaple01/main/ethernet_status.sh")
