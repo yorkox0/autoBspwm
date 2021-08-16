@@ -197,8 +197,8 @@ def polybar():
     os.system("mv tools/battery.sh ~/.config/bin/")
 
     # Copia la config de polybar personalizada
-    os.system("cp tools/launch.sh ~/.config/polybar")
-    os.system("cp tools/current.ini ~/.config/polybar")
+    #os.system("cp tools/launch.sh ~/.config/polybar")
+    #os.system("cp tools/current.ini ~/.config/polybar")
 
     # Copia la config de rofi personalizada
     os.system("mkdir ~/.config/rofi")
