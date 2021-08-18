@@ -195,6 +195,7 @@ def polybar():
     os.system("echo '' > ~/.config/bin/target")
     os.system("chmod +x tools/battery.sh")
     os.system("mv tools/battery.sh ~/.config/bin/")
+    os.system("echo '' > ~/.config/bin/target")
 
     # Copia la config de polybar personalizada
     #os.system("cp tools/launch.sh ~/.config/polybar")
