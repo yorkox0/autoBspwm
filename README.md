@@ -1,4 +1,4 @@
-Se ha testeado este script en ParrotOS, Kali y ubuntu.
+Se ha testeado este script en ParrotOS, Kali y Ubuntu.
 Funciona para todos los sistemas operativos basados en Debian.
 
 # Instalación
