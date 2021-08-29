@@ -59,7 +59,7 @@ def menu():
     if option == "3":
         polybar()
     if option == "4":
-	req()
+        req()
         bspwm()
         polybar()
     if option == "5":
