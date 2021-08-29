@@ -1,4 +1,4 @@
-wimport os, time
+import os, time
 from sys import stdout
 
 def red():
