@@ -1,4 +1,4 @@
-import os, time
+wimport os, time
 from sys import stdout
 
 def red():
@@ -41,9 +41,9 @@ def menu():
     time.sleep(1)
     print("1 -> Instalar Requerimientos necesarios")
     time.sleep(1)
-    print("\n2 -> Instalar bspwm")
+    print("\n2 -> Instalar Bspwm")
     time.sleep(1)
-    print("\n3 -> Instalar Polybar")
+    print("\n3 -> Instalar Polybar, Picom, Rofi...")
     time.sleep(1)
     print("\n4 -> All In One")
     time.sleep(1)
@@ -59,7 +59,7 @@ def menu():
     if option == "3":
         polybar()
     if option == "4":
-        req()
+	req()
         bspwm()
         polybar()
     if option == "5":
@@ -170,15 +170,24 @@ def polybar():
     os.system("sudo rm -r ~/.config/polybar/ 2>/dev/null")
     os.system("sudo mv ~/.config/polybar-backup/ ~/.config/polybar/")
     os.system("echo '~/.config/polybar/./launch.sh' >> ~/.config/bspwm/bspwmrc")
-    
+
     # Copia la config de picom
     os.system("mkdir ~/.config/picom")
-    os.system("cp tools/picom.conf ~/.config/picom")
     os.system("echo 'bspc config focus_follows_pointer true' >> ~/.config/bspwm/bspwmrc")
-    os.system("echo 'picom --experimental-backends &' >> ~/.config/bspwm/bspwmrc")
+
+    expback = input("\nDesea usear los experimental-backends en picom? Si no se activa se puede detectar lentitud en el equipo al no disponer de una buena GPU. si/no -> ")
+
+    if expback == "si":
+	os.system("cp tools/picom.conf ~/.config/picom")
+	os.system("echo 'picom --experimental-backends &' >> ~/.config/bspwm/bspwmrc")
+
+    if expback == "no":
+ 	os.system("cp tools/picom-blur.conf ~/.config/picom/picom.conf")
+	os.system("echo 'picom --experimental-backends &' >> ~/.config/bspwm/bspwmrc'")
+
     os.system("echo 'bspc config border_width 0' >> ~/.config/bspwm/bspwmrc")
     os.system("mkdir ~/.config/bin")
-    
+
     # Instalacion de Fuentes para Polybar
     os.system("sudo cp ~/.config/polybar/fonts/* /usr/share/fonts")
 
@@ -262,7 +271,6 @@ def polybar():
     os.system("wget https://raw.githubusercontent.com/Akronox/WichSystem.py/main/wichSystem.py")
     os.system("chmod +x wichSystem.py")
     os.system("sudo mv wichSystem.py /bin/")
-
 
     # Instalando lsd para zsh
     os.system("sudo dpkg -i tools/lsd.deb")
