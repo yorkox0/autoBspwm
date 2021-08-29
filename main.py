@@ -267,10 +267,9 @@ def polybar():
     os.system("chmod +x tools/fastTCPscan.go")
     os.system("sudo cp tools/fastTCPscan.go /bin")
 
-    # Instalando wichSystempy
-    os.system("wget https://raw.githubusercontent.com/Akronox/WichSystem.py/main/wichSystem.py")
-    os.system("chmod +x wichSystem.py")
-    os.system("sudo mv wichSystem.py /bin/")
+    # Instalando wichSystem.py
+    os.system("chmod +x tools/wichSystem.py")
+    os.system("sudo mv tools/wichSystem.py /bin/")
 
     # Instalando lsd para zsh
     os.system("sudo dpkg -i tools/lsd.deb")
