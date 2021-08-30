@@ -178,7 +178,7 @@ def polybar():
     expback = input("\nDesea usear los experimental-backends en picom? Si no se activa se puede detectar lentitud en el equipo al no disponer de una buena GPU. si/no -> ")
 
     if expback == "si":
-	os.system("cp tools/picom.conf ~/.config/picom")
+        os.system("cp tools/picom.conf ~/.config/picom")
 	os.system("echo 'picom --experimental-backends &' >> ~/.config/bspwm/bspwmrc")
 
     if expback == "no":
