@@ -25,6 +25,5 @@ if [ $target ]; then
             fi
         fi
 else
-    #echo "%{F#3B83BD}什 %{F#FFFFFF}No target%{u-}"
     echo "%{F#e51d0b}%{u-}%{F#ffffff} No target"
 fi
