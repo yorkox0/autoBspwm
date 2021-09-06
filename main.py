@@ -176,7 +176,6 @@ def polybar():
     # Copia la config de picom
     os.system("mkdir ~/.config/picom")
     os.system("echo 'bspc config focus_follows_pointer true' >> ~/.config/bspwm/bspwmrc")
-    os.system("echo 'picom --experimental-backends &' >> ~/.config/bspwm/bspwmrc'")
     
     expback = input("\nDesea usear los experimental-backends en picom? Si no se activa se puede detectar lentitud en el equipo al no disponer de una buena GPU. si/no -> ")
 
@@ -188,6 +187,7 @@ def polybar():
 
     os.system("echo 'bspc config border_width 0' >> ~/.config/bspwm/bspwmrc")
     os.system("mkdir ~/.config/bin")
+    os.system("echo 'picom --experimental-backends &' >> ~/.config/bspwm/bspwmrc'")
 
     # Instalacion de Fuentes para Polybar
     os.system("sudo cp ~/.config/polybar/fonts/* /usr/share/fonts")
