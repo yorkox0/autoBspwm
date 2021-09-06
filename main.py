@@ -187,7 +187,7 @@ def polybar():
 
     os.system("echo 'bspc config border_width 0' >> ~/.config/bspwm/bspwmrc")
     os.system("mkdir ~/.config/bin")
-    os.system("echo 'picom --experimental-backends &' >> ~/.config/bspwm/bspwmrc'")
+    os.system("echo 'picom --experimental-backends &' >> ~/.config/bspwm/bspwmrc")
 
     # Instalacion de Fuentes para Polybar
     os.system("sudo cp ~/.config/polybar/fonts/* /usr/share/fonts")
