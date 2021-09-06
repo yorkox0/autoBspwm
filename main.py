@@ -176,16 +176,15 @@ def polybar():
     # Copia la config de picom
     os.system("mkdir ~/.config/picom")
     os.system("echo 'bspc config focus_follows_pointer true' >> ~/.config/bspwm/bspwmrc")
-
+    os.system("echo 'picom --experimental-backends &' >> ~/.config/bspwm/bspwmrc'")
+    
     expback = input("\nDesea usear los experimental-backends en picom? Si no se activa se puede detectar lentitud en el equipo al no disponer de una buena GPU. si/no -> ")
 
     if expback == "si":
         os.system("cp tools/picom.conf ~/.config/picom")
-        os.system("echo 'picom --experimental-backends &' >> ~/.config/bspwm/bspwmrc")
 
     if expback == "no":
         os.system("cp tools/picom-blur.conf ~/.config/picom/picom.conf")
-        os.system("echo 'picom --experimental-backends &' >> ~/.config/bspwm/bspwmrc'")
 
     os.system("echo 'bspc config border_width 0' >> ~/.config/bspwm/bspwmrc")
     os.system("mkdir ~/.config/bin")
@@ -224,13 +223,13 @@ def polybar():
     os.system("sudo chmod +x /bin/cleartarget")
 
     # Instalacion de powerlevel10k
-    os.system("git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k")
-    os.system("echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc")
+    os.system("git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlevel10k")
+    os.system("echo 'source ~/.powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc")
     #os.system("chsh -s /bin/zsh")
     
     # Instalacion de powerlevel10k para root
-    os.system("sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k")
-    os.system("sudo echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> /root/.zshrc")
+    os.system("sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/.powerlevel10k")
+    os.system("sudo echo 'source ~/.powerlevel10k/powerlevel10k.zsh-theme' >> /root/.zshrc")
 
     # Añadiendo scripts personaliados de s4vitar. extractPorts, whichSystem...
     os.system("cp tools/zshrc_conf ~/.zshrc")
