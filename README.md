@@ -17,10 +17,6 @@ sudo nano /home/TU_USUARIO/.zshrc
 ```
 luego haz CTRL+S para guardar cambios y reinicia.
 
-# Menu de Inicio
-
-  <img src="https://i.imgur.com/iofNJ8c.png" />
-
 # Resultado Final
 
   <img src="https://i.imgur.com/Eo1Zmft.png" />
