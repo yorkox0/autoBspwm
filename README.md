@@ -1,5 +1,5 @@
 # AutoBspwm
-Este script instala y configura el entorno de trabajo de S4vitar con Bspwm de forma automática.
+Este script instala y configura un entorno de trabajo con Bspwm de forma automática.
 (Tested on Kali)
 
 # Instalacion
