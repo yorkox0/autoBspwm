@@ -276,6 +276,13 @@ def polybar():
     # Instalando lsd para zsh
     os.system("sudo dpkg -i tools/lsd.deb")
 
+    # Instalación del Oh My Tmux
+    os.system("rm -rf ~/.tmux")
+    os.system("cd")
+    os.system("git clone https://github.com/gpakosz/.tmux.git")
+    os.system("ln -s -f .tmux/.tmux.conf")
+    os.system("cp .tmux/.tmux.conf.local .")
+
     print("\n[+] POLYBAR INSTALADO!!!")
 
 if __name__ == '__main__':
