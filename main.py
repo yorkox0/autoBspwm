@@ -116,6 +116,13 @@ def bspwm():
     # Elimina los archivos de sxhkd
     os.system("sudo rm -r contrib/ doc/ examples/ src/ grab.o helpers.o LICENSE Makefile parse.o README.md Sourcedeps sxhkd sxhkd.o types.o VERSION")
     os.system("cp tools/sxhkdrc ~/.config/sxhkd")
+    
+    # Añadir compatibilidad con vmware copy/paste
+    os.system("echo 'vmware-user-suid-wrapper' >> ~/.config/bspwm/bspwmrc")
+
+    # Añadir layout en español
+    os.system("echo 'setxkbmap es' >> ~/.config/bspwm/bspwmrc")
+    
     print("\n[+] Bspwm instalado correctamente!")
 
 def polybar():
